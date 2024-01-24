@@ -1,41 +1,38 @@
 #include <iostream>
-#include <map>
+#include <list>
 
 using namespace std;
 
 
 int main() {
-    int n = 0; // 반에 있는 학생 수
+    //입출력 속도 개선을 위해서
+    ios::sync_with_stdio(false);
+    cin.tie(NULL);
+    cout.tie(NULL);
 
-    int min_ans = 0;
-    int max_ans = 0;
-
+    int n;
     cin>>n;
 
-    map<int,string> db;
-
-    for(int i=0;i<n;i++){
-        //초기화
-        string human;
-        int dd = 0;
-        int mm = 0;
-        int yy = 0;
-        int year = 0;
-        cin>>human>>dd>>mm>>yy;
-
-        //입력시 나이를 1990-01-01부터 계산해서 저장한다.
-        year = dd+(mm-1)*30+(yy-1990)*365;
-        //year가 높을수록 나이가 낮게 된다.
-
-        db.insert({year,human});
-
-    }
-
-    for(auto iter=db.begin();iter!=db.end();iter++){
-
-        if(iter->first < min_ans){
+    for(int i=0;i<2*n-1;i++){
+        for(int j=0;j<n;j++){
+            if(i<n){ // 중간까지
+                if(n-i-1>j){
+                    cout<<' ';
+                }else {
+                    cout<<'*';
+                }
+            } else {
+                if(i-n+1>j){
+                    cout<<' ';
+                } else {
+                    cout<<'*';
+                }
+            }
 
         }
-
+        cout<<'\n';
     }
+
+    return 0;
+
 }
